@@ -1,0 +1,19 @@
+tunnel:
+  image: jkawamoto/ambassadors
+  command: tunnel -v
+  volumes:
+    - ~/.ssh/id_rsa:/root/.ssh/id_rsa
+  environment:
+    HOST: 
+    PORT: 18989
+ncc_ambassadors:
+  image: jkawamoto/ambassadors
+  command: client -v
+  expose:
+    - 8989
+  environment:
+    PORT: 8989
+  ports:
+    - "127.0.0.1:8989:8989"
+  links:
+    - tunnel

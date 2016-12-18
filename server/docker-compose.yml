@@ -1,0 +1,21 @@
+nis:
+  image: jkawamoto/nem-standalone
+  command: nis
+  volumes:
+    - ./nis:/root/nem
+ncc:
+  image: jkawamoto/nem-standalone
+  command: ncc
+  links:
+    - nis
+  volumes:
+    - ./ncc:/root/nem
+ambassadors:
+  image: jkawamoto/ambassadors
+  command: server
+  volumes:
+    - ~/.ssh/authorized_keys:/data/authorized_keys
+  ports:
+    - "18989:22"
+  links:
+    - ncc
