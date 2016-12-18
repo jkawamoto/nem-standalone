@@ -1,0 +1,16 @@
+nis:
+  image: jkawamoto/nem-standalone
+  command: nis
+  volumes:
+    - ./nis:/root/nem
+ncc:
+  image: jkawamoto/nem-standalone
+  command: ncc
+  expose:
+    - 8989
+  links:
+    - nis
+  ports:
+    - "127.0.0.1:8989:8989"
+  volumes:
+    - ./ncc:/root/nem
