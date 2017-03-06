@@ -9,8 +9,8 @@ RUN apt-get update && \
     rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/
 
 WORKDIR /root/
-ADD http://bob.nem.ninja/installer/nis-ncc-0.6.82.zip .
-RUN unzip nis-ncc-0.6.82.zip
+ADD http://bob.nem.ninja/installer/nis-ncc-0.6.84.zip .
+RUN unzip nis-ncc-0.6.84.zip
 
 ENV PORT 8989
 EXPOSE $PORT
